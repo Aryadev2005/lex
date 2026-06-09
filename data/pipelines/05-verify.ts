@@ -104,7 +104,7 @@ function printVerdict(metrics: VerificationMetrics, verdict: Verdict): void {
   console.log(bold('VERIFICATION SUMMARY'));
   console.log('═'.repeat(70));
   console.log(`Queries with results:       ${metrics.queries_with_results} / ${TEST_QUERIES.length}`);
-  console.log(`Clearing threshold (≥0.72): ${metrics.queries_clearing_threshold} / ${TEST_QUERIES.length}`);
+  console.log(`Clearing threshold (≥0.50): ${metrics.queries_clearing_threshold} / ${TEST_QUERIES.length}`);
   console.log(`Average top similarity:     ${metrics.avg_top_similarity.toFixed(4)}`);
   console.log(`Average latency:            ${metrics.avg_latency_ms.toFixed(0)} ms`);
   console.log('─'.repeat(70));

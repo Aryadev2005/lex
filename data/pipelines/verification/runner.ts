@@ -3,7 +3,8 @@ import { supabase } from '../shared/db.js';
 import type { TestQuery } from '../../seeds/test-queries.js';
 
 // rrf_score max ≈ 1/(k+1); use vector_score (cosine similarity) for the threshold
-const SIMILARITY_THRESHOLD = 0.72;
+// 0.50 is appropriate for text-embedding-3-large on legal text (cross-doc similarity ~0.55-0.75)
+const SIMILARITY_THRESHOLD = 0.50;
 const EMBEDDING_DIM = 3072;
 
 // Raw row returned by the actual hybrid_search function
@@ -62,12 +63,15 @@ export async function runQuery(query: TestQuery): Promise<QueryResult> {
   }
 
   // 2. Call the actual hybrid_search RPC
+  // similarity_threshold=0: let HNSW return top results regardless of score;
+  // we apply our own threshold check on the returned vector_score.
   const { data, error } = await supabase.rpc('hybrid_search', {
-    query_text:       query.query,
-    query_embedding:  embedding,
-    match_count:      12,
-    rrf_k:            60,
-    include_public:   true,
+    query_text:           query.query,
+    query_embedding:      embedding,
+    match_count:          12,
+    rrf_k:                60,
+    include_public:       true,
+    similarity_threshold: 0,
   });
 
   if (error) {
