@@ -11,6 +11,7 @@ export default defineConfig({
       JWT_EXPIRES_IN: '7d',
       NODE_ENV: 'test',
       API_PORT: '3001',
+      OPENAI_API_KEY: 'test-openai-key-not-real',
     },
     coverage: {
       provider: 'v8',
