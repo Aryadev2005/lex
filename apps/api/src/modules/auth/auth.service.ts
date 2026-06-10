@@ -3,6 +3,10 @@ import type { FastifyInstance } from 'fastify';
 import type { RegisterBody, LoginBody } from './auth.schema.js';
 import { env } from '../../env.js';
 
+function freshAdminClient() {
+  return createSupabaseAdminClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
+}
+
 type SupabaseClient = ReturnType<typeof createSupabaseAdminClient>;
 
 export async function registerUser(
@@ -61,7 +65,7 @@ export async function loginUser(
     throw Object.assign(new Error('Invalid credentials'), { statusCode: 401 });
   }
 
-  const { data: userRow, error: fetchError } = await supabase
+  const { data: userRow, error: fetchError } = await freshAdminClient()
     .from('users')
     .select('id, email, full_name, role, org_id')
     .eq('id', data.user.id)

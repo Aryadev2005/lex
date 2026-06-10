@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import './env.js'; // validate env before anything else
 import { buildApp } from './app.js';
 import { env } from './env.js';

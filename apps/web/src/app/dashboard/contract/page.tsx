@@ -6,7 +6,6 @@ import { useAuthStore } from '@/store/authStore';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
-// Local type definitions mirroring the API types
 interface ExtractedClause {
   id: string;
   type: string;
@@ -109,7 +108,6 @@ function RiskCard({ risk }: { risk: RiskItem }) {
       </div>
 
       <p className="text-sm text-slate-200 leading-relaxed">{risk.risk_explanation}</p>
-
       <p className="text-sm italic text-slate-400">{risk.legal_basis}</p>
 
       {risk.legal_citations.length > 0 && (
@@ -157,7 +155,6 @@ export default function ContractPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Left panel — input */}
         <div className="space-y-4">
           <Card>
             <div className="space-y-3">
@@ -195,7 +192,6 @@ export default function ContractPage() {
           </Card>
         </div>
 
-        {/* Right panel — results */}
         <div className="space-y-4">
           {error && (
             <Card className="border-red-700 bg-red-900/20">

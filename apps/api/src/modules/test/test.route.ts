@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 
 export async function testRoutes(fastify: FastifyInstance) {
-  fastify.get('/test/db', async (_request, reply) => {
+  fastify.get('/test/db', { preHandler: [fastify.authenticate] }, async (_request, reply) => {
     try {
       const { count, error } = await fastify.supabase
         .from('organizations')

@@ -180,13 +180,30 @@ describe('API Routes', () => {
   });
 
   describe('GET /test/db', () => {
+    it('returns 401 without token', async () => {
+      const response = await app.inject({ method: 'GET', url: '/test/db' });
+      expect(response.statusCode).toBe(401);
+    });
+
     it('returns 200 with connected: true on success', async () => {
+      await app.ready();
+      const token = app.jwt.sign({
+        sub: 'user-123',
+        email: 'test@example.com',
+        role: 'attorney' as const,
+        org_id: null,
+      });
+
       const mockCountChain = {
         select: vi.fn().mockResolvedValueOnce({ count: 5, error: null }),
       };
       mockSupabaseClient.from.mockReturnValueOnce(mockCountChain);
 
-      const response = await app.inject({ method: 'GET', url: '/test/db' });
+      const response = await app.inject({
+        method: 'GET',
+        url: '/test/db',
+        headers: { authorization: `Bearer ${token}` },
+      });
 
       expect(response.statusCode).toBe(200);
       const body = response.json<{ connected: boolean }>();
@@ -194,6 +211,14 @@ describe('API Routes', () => {
     });
 
     it('returns connected: false on Supabase error', async () => {
+      await app.ready();
+      const token = app.jwt.sign({
+        sub: 'user-123',
+        email: 'test@example.com',
+        role: 'attorney' as const,
+        org_id: null,
+      });
+
       const mockCountChain = {
         select: vi.fn().mockResolvedValueOnce({
           count: null,
@@ -202,7 +227,11 @@ describe('API Routes', () => {
       };
       mockSupabaseClient.from.mockReturnValueOnce(mockCountChain);
 
-      const response = await app.inject({ method: 'GET', url: '/test/db' });
+      const response = await app.inject({
+        method: 'GET',
+        url: '/test/db',
+        headers: { authorization: `Bearer ${token}` },
+      });
 
       expect(response.statusCode).toBe(200);
       const body = response.json<{ connected: boolean }>();

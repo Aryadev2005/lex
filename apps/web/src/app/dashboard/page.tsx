@@ -36,7 +36,6 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      {/* Welcome header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white">
@@ -49,7 +48,6 @@ export default function DashboardPage() {
         </Button>
       </div>
 
-      {/* User info card */}
       <Card title="Account Details">
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
@@ -83,7 +81,6 @@ export default function DashboardPage() {
         </dl>
       </Card>
 
-      {/* DB Connection status */}
       <Card title="System Status">
         {dbLoading ? (
           <div className="flex items-center gap-3">

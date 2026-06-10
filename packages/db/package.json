@@ -17,10 +17,12 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.43.0"
+    "@supabase/supabase-js": "^2.43.0",
+    "ws": "^8.21.0"
   },
   "devDependencies": {
     "@lex/config": "workspace:*",
+    "@types/ws": "^8.18.1",
     "typescript": "^5.4.0"
   }
 }
