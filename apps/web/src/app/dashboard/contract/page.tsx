@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useSSE } from '@/hooks/useSSE';
 import { useAuthStore } from '@/store/authStore';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { extractPdfText } from '@/lib/extractPdfText';
 
 interface ExtractedClause {
   id: string;
@@ -124,14 +125,117 @@ function RiskCard({ risk }: { risk: RiskItem }) {
   );
 }
 
+type UploadState = 'idle' | 'extracting' | 'done' | 'error';
+
 export default function ContractPage() {
   const [contractText, setContractText] = useState('');
+  const [uploadState, setUploadState] = useState<UploadState>('idle');
+  const [uploadStatus, setUploadStatus] = useState('');
+  const [isDragOver, setIsDragOver] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const { events, isStreaming, error, startStream } = useSSE();
   const token = useAuthStore((s) => s.token);
+
+  async function handleDownloadRedline() {
+    if (!resultEvent || !token) return;
+    setIsDownloading(true);
+    try {
+      const baseUrl = process.env['NEXT_PUBLIC_API_URL'] ?? '';
+      const res = await fetch(`${baseUrl}/api/contract/redline`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ analysis: resultEvent.analysis }),
+      });
+      if (!res.ok) throw new Error(`Download failed: ${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'lex-contract-redline.docx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Redline download failed:', err);
+    } finally {
+      setIsDownloading(false);
+    }
+  }
 
   function handleAnalyse() {
     if (!contractText.trim() || !token) return;
     startStream('/api/contract/analyze', { document_text: contractText }, token);
+  }
+
+  function handleClear() {
+    setContractText('');
+    setUploadState('idle');
+    setUploadStatus('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }
+
+  async function processFile(file: File) {
+    if (!file.name.match(/\.(pdf|txt)$/i)) {
+      setUploadState('error');
+      setUploadStatus(`Unsupported file type: ${file.name}. Only .pdf and .txt are accepted.`);
+      return;
+    }
+
+    if (file.name.toLowerCase().endsWith('.txt')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = (e.target?.result as string) ?? '';
+        setContractText(text);
+        setUploadState('done');
+        setUploadStatus(`Loaded ${text.length.toLocaleString()} characters from ${file.name}`);
+      };
+      reader.onerror = () => {
+        setUploadState('error');
+        setUploadStatus(`Failed to read ${file.name}`);
+      };
+      reader.readAsText(file);
+      return;
+    }
+
+    // PDF path
+    setUploadState('extracting');
+    setUploadStatus('');
+    try {
+      const text = await extractPdfText(file);
+      setContractText(text);
+      setUploadState('done');
+      setUploadStatus(`extracted ${text.length.toLocaleString()} characters from ${file.name}`);
+    } catch (err) {
+      setUploadState('error');
+      setUploadStatus(err instanceof Error ? err.message : `Failed to extract ${file.name}`);
+    }
+  }
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    setIsDragOver(false);
+    const file = e.dataTransfer.files[0];
+    if (file) processFile(file);
+  }
+
+  function handleDragOver(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    setIsDragOver(true);
+  }
+
+  function handleDragLeave() {
+    setIsDragOver(false);
+  }
+
+  function handleFileInput(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) processFile(file);
   }
 
   const progressEvents = events.filter((e) => e.type === 'progress');
@@ -158,14 +262,81 @@ export default function ContractPage() {
         <div className="space-y-4">
           <Card>
             <div className="space-y-3">
-              <textarea
-                value={contractText}
-                onChange={(e) => setContractText(e.target.value)}
-                placeholder="Paste your contract here…"
-                style={{ minHeight: '16rem' }}
-                className="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 p-4 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none text-sm leading-relaxed"
-                maxLength={MAX_CHARS}
-              />
+              {/* Drop zone */}
+              <div
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                className={`rounded-lg border-2 border-dashed px-4 py-6 text-center transition-colors ${
+                  isDragOver
+                    ? 'border-indigo-500 bg-indigo-950/30'
+                    : 'border-slate-700 bg-slate-800/40 hover:border-slate-600'
+                }`}
+              >
+                <svg
+                  className="mx-auto mb-2 h-8 w-8 text-slate-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <p className="text-sm text-slate-400">
+                  Drop a <span className="text-white">.pdf</span> or{' '}
+                  <span className="text-white">.txt</span> file here
+                </p>
+                <p className="mt-1 text-xs text-slate-500">or</p>
+                <label className="mt-2 inline-block cursor-pointer rounded-md bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:bg-slate-600 transition-colors">
+                  Browse file
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept=".pdf,.txt"
+                    className="sr-only"
+                    onChange={handleFileInput}
+                  />
+                </label>
+              </div>
+
+              {/* Upload status line */}
+              {uploadState === 'extracting' && (
+                <p className="animate-pulse text-xs text-slate-400">
+                  Extracting text from PDF…
+                </p>
+              )}
+              {uploadState === 'done' && uploadStatus && (
+                <p className="text-xs text-slate-400">{uploadStatus}</p>
+              )}
+              {uploadState === 'error' && uploadStatus && (
+                <p className="text-xs text-red-400">{uploadStatus}</p>
+              )}
+
+              {/* Textarea */}
+              <div className="relative">
+                <textarea
+                  value={contractText}
+                  onChange={(e) => setContractText(e.target.value)}
+                  placeholder="Paste your contract here…"
+                  style={{ minHeight: '16rem' }}
+                  className="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 p-4 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none text-sm leading-relaxed"
+                  maxLength={MAX_CHARS}
+                />
+                {contractText && (
+                  <button
+                    type="button"
+                    onClick={handleClear}
+                    className="absolute right-3 top-3 rounded bg-slate-700 px-1.5 py-0.5 text-xs text-slate-300 hover:bg-slate-600 hover:text-white transition-colors"
+                    aria-label="Clear"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
 
               <div className="flex items-center justify-between">
                 <p className="text-xs text-slate-500">
@@ -182,7 +353,7 @@ export default function ContractPage() {
 
               <Button
                 variant="primary"
-                disabled={!contractText.trim() || isStreaming}
+                disabled={!contractText.trim() || isStreaming || uploadState === 'extracting'}
                 isLoading={isStreaming}
                 onClick={handleAnalyse}
               >
@@ -207,7 +378,7 @@ export default function ContractPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <p className="text-sm text-slate-400">Paste a contract to begin analysis</p>
+                <p className="text-sm text-slate-400">Paste or upload a contract to begin analysis</p>
               </div>
             </Card>
           )}
@@ -260,6 +431,19 @@ export default function ContractPage() {
                   {resultEvent.analysis.risks.map((risk) => (
                     <RiskCard key={risk.clause_id} risk={risk} />
                   ))}
+                  <div className="mt-4">
+                    <Button
+                      variant="primary"
+                      disabled={isDownloading}
+                      isLoading={isDownloading}
+                      onClick={handleDownloadRedline}
+                    >
+                      {isDownloading ? 'Generating DOCX…' : 'Download Redline (.docx)'}
+                    </Button>
+                    <p className="text-xs text-slate-400 mt-2">
+                      Professionally formatted Word document with original clauses, risk assessments, and suggested redrafts.
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

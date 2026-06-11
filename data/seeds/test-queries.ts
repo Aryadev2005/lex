@@ -383,4 +383,380 @@ export const TEST_QUERIES: TestQuery[] = [
     expected_context: 'Supreme Court judgments on Section 151 CPC inherent powers and their limitations',
     expected_keywords: ['Section 151', 'CPC', 'inherent powers', 'ends of justice', 'abuse of process', 'express provision'],
   },
+
+  // ── Contract law — drafting issues (q051–q060) ──────────────────────────
+
+  {
+    id: 'q051',
+    query: 'Are limitation of liability clauses in commercial contracts enforceable under Indian law?',
+    category: 'contract',
+    expected_context: 'Supreme Court and High Court judgments on enforceability of limitation of liability clauses under Indian Contract Act',
+    expected_keywords: ['limitation of liability', 'Indian Contract Act', 'Section 73', 'exemption clause', 'enforceability', 'unconscionable'],
+  },
+  {
+    id: 'q052',
+    query: 'What is the scope and enforceability of indemnity clauses under the Indian Contract Act 1872?',
+    category: 'contract',
+    expected_context: 'Supreme Court judgments on indemnity obligations under Section 124 and 125 Indian Contract Act',
+    expected_keywords: ['indemnity', 'Section 124', 'Section 125', 'Indian Contract Act 1872', 'indemnifier', 'losses'],
+  },
+  {
+    id: 'q053',
+    query: 'What is the distinction between a penalty and liquidated damages under Section 74 of the Indian Contract Act?',
+    category: 'contract',
+    expected_context: 'Supreme Court judgments on Section 74 Indian Contract Act penalty vs genuine pre-estimate of loss',
+    expected_keywords: ['Section 74', 'liquidated damages', 'penalty', 'Indian Contract Act', 'genuine pre-estimate', 'reasonable compensation'],
+  },
+  {
+    id: 'q054',
+    query: 'Is a termination for convenience clause in a commercial contract valid under Indian law and what compensation is payable?',
+    category: 'contract',
+    expected_context: 'Supreme Court and High Court judgments on termination for convenience and compensation under Indian Contract Act',
+    expected_keywords: ['termination for convenience', 'Indian Contract Act', 'Section 73', 'compensation', 'damages', 'reasonable notice'],
+  },
+  {
+    id: 'q055',
+    query: 'How have Indian courts interpreted force majeure clauses in the context of COVID-19 disruptions?',
+    category: 'contract',
+    expected_context: 'High Court judgments on force majeure under Section 32 and Section 56 Indian Contract Act and COVID-19',
+    expected_keywords: ['force majeure', 'COVID-19', 'Section 56', 'frustration', 'Indian Contract Act', 'impossibility'],
+  },
+  {
+    id: 'q056',
+    query: 'To what extent can consequential damages be excluded in a commercial contract under Indian law?',
+    category: 'contract',
+    expected_context: 'Supreme Court and High Court judgments on exclusion of consequential and indirect damages under Contract Act',
+    expected_keywords: ['consequential damages', 'exclusion clause', 'Section 73', 'Indian Contract Act', 'indirect loss', 'remoteness'],
+  },
+  {
+    id: 'q057',
+    query: 'How do Indian courts resolve conflicts between a governing law clause and mandatory provisions of Indian law?',
+    category: 'contract',
+    expected_context: 'Supreme Court judgments on governing law clauses and mandatory provisions of Indian law in conflict of laws',
+    expected_keywords: ['governing law', 'conflict of laws', 'mandatory provisions', 'Indian Contract Act', 'private international law', 'choice of law'],
+  },
+  {
+    id: 'q058',
+    query: 'When can contractual rights be assigned under Indian law and what restrictions apply?',
+    category: 'contract',
+    expected_context: 'Supreme Court judgments on assignment of contractual rights and obligations under Transfer of Property Act and Contract Act',
+    expected_keywords: ['assignment', 'contractual rights', 'Transfer of Property Act', 'consent', 'personal contract', 'novation'],
+  },
+  {
+    id: 'q059',
+    query: 'What is the legal effect of a warranty disclaimer clause in a commercial supply agreement under Indian law?',
+    category: 'contract',
+    expected_context: 'Supreme Court and High Court judgments on warranty disclaimers and implied terms under Indian Sale of Goods Act and Contract Act',
+    expected_keywords: ['warranty disclaimer', 'implied warranty', 'Sale of Goods Act', 'Indian Contract Act', 'fitness for purpose', 'exclusion'],
+  },
+  {
+    id: 'q060',
+    query: 'What protections do Indian courts extend to parties bound by unfair terms in standard form contracts?',
+    category: 'contract',
+    expected_context: 'Supreme Court judgments on standard form contracts, unconscionable terms and public policy under Indian Contract Act',
+    expected_keywords: ['standard form contract', 'unconscionable terms', 'public policy', 'Indian Contract Act', 'adhesion contract', 'unequal bargaining'],
+  },
+
+  // ── Commercial / Corporate (q061–q068) ─────────────────────────────────
+
+  {
+    id: 'q061',
+    query: 'When will Indian courts lift the corporate veil and hold a parent company or director liable for subsidiary obligations?',
+    category: 'corporate',
+    expected_context: 'Supreme Court judgments on lifting the corporate veil under Companies Act and common law',
+    expected_keywords: ['corporate veil', 'lifting', 'parent company', 'Companies Act', 'alter ego', 'fraud'],
+  },
+  {
+    id: 'q062',
+    query: 'What is the duty of care owed by directors under Section 166 of the Companies Act 2013?',
+    category: 'corporate',
+    expected_context: 'NCLT and High Court judgments on directors\' duties under Section 166 Companies Act 2013',
+    expected_keywords: ['Section 166', 'directors duty', 'Companies Act 2013', 'due care', 'diligence', 'fiduciary'],
+  },
+  {
+    id: 'q063',
+    query: 'What remedies are available to minority shareholders for oppression and mismanagement under the Companies Act 2013?',
+    category: 'corporate',
+    expected_context: 'NCLT and NCLAT judgments on minority shareholder oppression under Sections 241-242 Companies Act 2013',
+    expected_keywords: ['minority shareholder', 'oppression', 'mismanagement', 'Section 241', 'Section 242', 'Companies Act 2013'],
+  },
+  {
+    id: 'q064',
+    query: 'What are pre-emption rights in a shareholders agreement and how are they enforced in India?',
+    category: 'corporate',
+    expected_context: 'High Court and Supreme Court judgments on pre-emption rights in shareholders agreements',
+    expected_keywords: ['pre-emption rights', 'right of first refusal', 'shareholders agreement', 'Companies Act', 'transfer restriction', 'specific performance'],
+  },
+  {
+    id: 'q065',
+    query: 'Are drag-along and tag-along rights in shareholders agreements enforceable under Indian corporate law?',
+    category: 'corporate',
+    expected_context: 'High Court judgments and SEBI regulations on drag-along and tag-along rights in shareholders agreements',
+    expected_keywords: ['drag-along', 'tag-along', 'shareholders agreement', 'Companies Act', 'minority rights', 'share transfer'],
+  },
+  {
+    id: 'q066',
+    query: 'What representations and warranties are typically given by a seller in a share purchase agreement and what remedies arise for breach?',
+    category: 'corporate',
+    expected_context: 'High Court judgments on representations warranties and indemnities in share purchase agreements',
+    expected_keywords: ['representations', 'warranties', 'share purchase agreement', 'indemnity', 'breach', 'Indian Contract Act'],
+  },
+  {
+    id: 'q067',
+    query: 'What constitutes a Material Adverse Change under Indian M&A agreements and how have courts interpreted it?',
+    category: 'corporate',
+    expected_context: 'Supreme Court and High Court judgments on Material Adverse Change clauses in merger and acquisition agreements',
+    expected_keywords: ['material adverse change', 'MAC clause', 'M&A', 'acquisition agreement', 'Indian Contract Act', 'termination'],
+  },
+  {
+    id: 'q068',
+    query: 'Are non-compete and non-solicitation clauses in employment and business sale agreements enforceable under Indian law?',
+    category: 'corporate',
+    expected_context: 'Supreme Court judgments on restraint of trade and Section 27 Indian Contract Act',
+    expected_keywords: ['non-compete', 'restraint of trade', 'Section 27', 'Indian Contract Act', 'reasonableness', 'business sale'],
+  },
+
+  // ── Intellectual Property (q069–q074) ───────────────────────────────────
+
+  {
+    id: 'q069',
+    query: 'Who owns the copyright in software developed by an employee in the course of employment under the Copyright Act 1957?',
+    category: 'ip',
+    expected_context: 'High Court and Supreme Court judgments on copyright ownership in employment under Section 17 Copyright Act 1957',
+    expected_keywords: ['copyright', 'employment', 'Section 17', 'Copyright Act 1957', 'employer', 'course of employment'],
+  },
+  {
+    id: 'q070',
+    query: 'What is the test for trademark infringement and passing off under the Trade Marks Act 1999?',
+    category: 'ip',
+    expected_context: 'Supreme Court and Delhi High Court judgments on trademark infringement and passing off under Trade Marks Act 1999',
+    expected_keywords: ['trademark infringement', 'passing off', 'Trade Marks Act 1999', 'deceptive similarity', 'goodwill', 'likelihood of confusion'],
+  },
+  {
+    id: 'q071',
+    query: 'How does Indian law protect trade secrets and confidential business information in the absence of a specific statute?',
+    category: 'ip',
+    expected_context: 'Supreme Court and High Court judgments on trade secret protection through equity, contract and breach of confidence',
+    expected_keywords: ['trade secret', 'confidential information', 'breach of confidence', 'Indian Contract Act', 'injunction', 'employment'],
+  },
+  {
+    id: 'q072',
+    query: 'On what grounds can a court grant an interim injunction for patent infringement under the Patents Act 1970?',
+    category: 'ip',
+    expected_context: 'Delhi High Court and Supreme Court judgments on interim injunction in patent infringement under Patents Act 1970',
+    expected_keywords: ['patent infringement', 'interim injunction', 'Patents Act 1970', 'prima facie case', 'balance of convenience', 'irreparable harm'],
+  },
+  {
+    id: 'q073',
+    query: 'What is the legal distinction between an assignment of copyright and a licence under the Copyright Act 1957?',
+    category: 'ip',
+    expected_context: 'High Court judgments on copyright assignment and licence under Sections 18-19 Copyright Act 1957',
+    expected_keywords: ['copyright assignment', 'copyright licence', 'Section 18', 'Section 19', 'Copyright Act 1957', 'exclusive licence'],
+  },
+  {
+    id: 'q074',
+    query: 'Can moral rights in a literary or artistic work be waived by contract under the Indian Copyright Act?',
+    category: 'ip',
+    expected_context: 'High Court judgments on moral rights under Section 57 Copyright Act 1957 and waivability',
+    expected_keywords: ['moral rights', 'Section 57', 'Copyright Act 1957', 'author', 'integrity', 'waiver'],
+  },
+
+  // ── Employment / Labour (q075–q080) ─────────────────────────────────────
+
+  {
+    id: 'q075',
+    query: 'What notice period is required for termination of employment and what constitutes wrongful termination under Indian law?',
+    category: 'employment',
+    expected_context: 'Supreme Court and High Court judgments on notice period and wrongful termination under Industrial Disputes Act',
+    expected_keywords: ['wrongful termination', 'notice period', 'Industrial Disputes Act', 'retrenchment', 'Section 25F', 'compensation'],
+  },
+  {
+    id: 'q076',
+    query: 'Are non-solicitation clauses in employment agreements enforceable after employment ends under Indian law?',
+    category: 'employment',
+    expected_context: 'High Court judgments on non-solicitation clause enforceability and Section 27 Indian Contract Act post-employment',
+    expected_keywords: ['non-solicitation', 'post-employment', 'Section 27', 'Indian Contract Act', 'restraint of trade', 'reasonable restriction'],
+  },
+  {
+    id: 'q077',
+    query: 'What is the legal effect of a garden leave clause in an employment contract under Indian law?',
+    category: 'employment',
+    expected_context: 'High Court judgments on garden leave provisions and their interaction with restraint of trade under Indian law',
+    expected_keywords: ['garden leave', 'employment contract', 'restraint of trade', 'Indian Contract Act', 'notice period', 'Section 27'],
+  },
+  {
+    id: 'q078',
+    query: 'What are the conditions for entitlement to gratuity under the Payment of Gratuity Act 1972 and how is it calculated?',
+    category: 'employment',
+    expected_context: 'Supreme Court and High Court judgments on gratuity entitlement under Payment of Gratuity Act 1972',
+    expected_keywords: ['gratuity', 'Payment of Gratuity Act 1972', 'five years', 'continuous service', 'last drawn salary', 'termination'],
+  },
+  {
+    id: 'q079',
+    query: 'What are the obligations of an employer to constitute an Internal Complaints Committee under the POSH Act 2013?',
+    category: 'employment',
+    expected_context: 'High Court judgments on employer obligations under Sexual Harassment of Women at Workplace (POSH) Act 2013',
+    expected_keywords: ['POSH Act', 'Internal Complaints Committee', 'sexual harassment', 'employer obligations', 'Section 4', 'workplace'],
+  },
+  {
+    id: 'q080',
+    query: 'What is the legal status of fixed-term employment contracts in India and can they be renewed indefinitely?',
+    category: 'employment',
+    expected_context: 'Supreme Court and High Court judgments on fixed-term employment and Industrial Employment Standing Orders',
+    expected_keywords: ['fixed-term employment', 'Industrial Disputes Act', 'standing orders', 'regular employment', 'renewal', 'contract labour'],
+  },
+
+  // ── Arbitration / Dispute Resolution (q081–q086) ────────────────────────
+
+  {
+    id: 'q081',
+    query: 'Are fraud and serious allegations arbitrable under the Arbitration and Conciliation Act 1996 in India?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court judgments on arbitrability of fraud under Arbitration and Conciliation Act 1996',
+    expected_keywords: ['arbitrability', 'fraud', 'Arbitration Act 1996', 'N. Radhakrishnan', 'Avitel Post Studioz', 'serious allegations'],
+  },
+  {
+    id: 'q082',
+    query: 'How are foreign arbitral awards enforced in India under Part II of the Arbitration and Conciliation Act 1996?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court judgments on enforcement of foreign arbitral awards under New York Convention and Arbitration Act 1996',
+    expected_keywords: ['foreign arbitral award', 'enforcement', 'New York Convention', 'Part II', 'Arbitration Act 1996', 'public policy'],
+  },
+  {
+    id: 'q083',
+    query: 'What is the procedure for appointment of an arbitrator by the Supreme Court or High Court under Section 11 of the Arbitration Act 1996?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court judgments on Section 11 appointment of arbitrators under Arbitration and Conciliation Act 1996',
+    expected_keywords: ['Section 11', 'appointment of arbitrator', 'Arbitration Act 1996', 'Supreme Court', 'High Court', 'arbitration agreement'],
+  },
+  {
+    id: 'q084',
+    query: 'What interim relief can courts grant under Section 9 of the Arbitration and Conciliation Act 1996?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court and High Court judgments on Section 9 interim measures under Arbitration Act 1996',
+    expected_keywords: ['Section 9', 'interim relief', 'Arbitration Act 1996', 'injunction', 'pre-arbitration', 'protective measures'],
+  },
+  {
+    id: 'q085',
+    query: 'On what grounds can an arbitral award be challenged under Section 34 of the Arbitration and Conciliation Act 1996?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court judgments on scope of challenge under Section 34 Arbitration Act 1996 and patent illegality',
+    expected_keywords: ['Section 34', 'Arbitration Act 1996', 'patent illegality', 'public policy', 'setting aside', 'arbitral award'],
+  },
+  {
+    id: 'q086',
+    query: 'What are the key differences between institutional arbitration and ad hoc arbitration under Indian law?',
+    category: 'arbitration',
+    expected_context: 'Supreme Court judgments and Law Commission reports on institutional vs ad hoc arbitration under Arbitration Act 1996',
+    expected_keywords: ['institutional arbitration', 'ad hoc arbitration', 'Arbitration Act 1996', 'arbitral institution', 'rules', 'costs'],
+  },
+
+  // ── Real Estate / Property (q087–q091) ─────────────────────────────────
+
+  {
+    id: 'q087',
+    query: 'What are the obligations of a real estate developer under RERA 2016 and what remedies are available to homebuyers?',
+    category: 'real_estate',
+    expected_context: 'Supreme Court and RERA Authority judgments on developer obligations and homebuyer remedies under RERA Act 2016',
+    expected_keywords: ['RERA', 'Real Estate Act 2016', 'developer obligations', 'homebuyer', 'registration', 'possession'],
+  },
+  {
+    id: 'q088',
+    query: 'What is the legal distinction between a leave and licence agreement and a lease under Indian property law?',
+    category: 'real_estate',
+    expected_context: 'Supreme Court judgments distinguishing leave and licence from lease under Section 105 and 52 Transfer of Property Act',
+    expected_keywords: ['leave and licence', 'lease', 'Transfer of Property Act', 'Section 105', 'Section 52', 'exclusive possession'],
+  },
+  {
+    id: 'q089',
+    query: 'What notice period is required to terminate a tenancy under state rent control laws and Transfer of Property Act?',
+    category: 'real_estate',
+    expected_context: 'Supreme Court and High Court judgments on tenancy termination notice under Transfer of Property Act and Rent Control Acts',
+    expected_keywords: ['tenancy termination', 'notice period', 'Transfer of Property Act', 'Section 106', 'Rent Control Act', 'eviction'],
+  },
+  {
+    id: 'q090',
+    query: 'When will a court order specific performance of an agreement to sell immovable property under the Specific Relief Act 1963?',
+    category: 'real_estate',
+    expected_context: 'Supreme Court judgments on specific performance of sale agreements under Specific Relief Act 1963 as amended in 2018',
+    expected_keywords: ['specific performance', 'agreement to sell', 'Specific Relief Act 1963', 'immovable property', 'readiness', 'willingness'],
+  },
+  {
+    id: 'q091',
+    query: 'What are the stamp duty and registration requirements for immovable property transactions in India?',
+    category: 'real_estate',
+    expected_context: 'Supreme Court and High Court judgments on stamp duty, Indian Stamp Act and Registration Act for property transactions',
+    expected_keywords: ['stamp duty', 'registration', 'Indian Stamp Act', 'Registration Act', 'immovable property', 'Section 17'],
+  },
+
+  // ── Constitutional / Fundamental Rights — new angles (q092–q096) ────────
+
+  {
+    id: 'q092',
+    query: 'What is the proportionality test applied by Indian courts when reviewing restrictions on fundamental rights?',
+    category: 'constitutional',
+    expected_context: 'Supreme Court judgments on proportionality standard in fundamental rights review — Puttaswamy, Anuradha Bhasin',
+    expected_keywords: ['proportionality', 'fundamental rights', 'legitimate aim', 'least restrictive means', 'Article 19', 'judicial review'],
+  },
+  {
+    id: 'q093',
+    query: 'How has the right to privacy recognised in Puttaswamy been applied to data protection and government surveillance in India?',
+    category: 'constitutional',
+    expected_context: 'Supreme Court judgments applying Puttaswamy right to privacy to Aadhaar, internet shutdown and surveillance cases',
+    expected_keywords: ['right to privacy', 'Puttaswamy', 'data protection', 'Aadhaar', 'Article 21', 'surveillance'],
+  },
+  {
+    id: 'q094',
+    query: 'What procedural safeguards does Article 21 of the Constitution require before the state deprives a person of life or personal liberty?',
+    category: 'constitutional',
+    expected_context: 'Supreme Court judgments on Article 21 procedural due process — Maneka Gandhi and subsequent cases',
+    expected_keywords: ['Article 21', 'procedural due process', 'Maneka Gandhi', 'fair procedure', 'personal liberty', 'just fair reasonable'],
+  },
+  {
+    id: 'q095',
+    query: 'What are the reasonable restrictions permissible on the right to carry on any trade or business under Article 19(1)(g) of the Constitution?',
+    category: 'constitutional',
+    expected_context: 'Supreme Court judgments on Article 19(1)(g) right to trade and Article 19(6) reasonable restrictions',
+    expected_keywords: ['Article 19(1)(g)', 'trade or business', 'Article 19(6)', 'reasonable restrictions', 'public interest', 'licensing'],
+  },
+  {
+    id: 'q096',
+    query: 'Which features of the Indian Constitution have been recognised as part of the basic structure that Parliament cannot abrogate?',
+    category: 'constitutional',
+    expected_context: 'Supreme Court judgments cataloguing basic structure features from Kesavananda Bharati to Minerva Mills',
+    expected_keywords: ['basic structure', 'Kesavananda Bharati', 'Minerva Mills', 'judicial review', 'free elections', 'secularism'],
+  },
+
+  // ── Tax Law — new areas (q097–q100) ─────────────────────────────────────
+
+  {
+    id: 'q097',
+    query: 'In what circumstances must a registered dealer reverse input tax credit under the CGST Act 2017?',
+    category: 'tax',
+    expected_context: 'High Court and AAR rulings on ITC reversal under Section 17 and Section 16 CGST Act 2017',
+    expected_keywords: ['input tax credit reversal', 'ITC', 'Section 17', 'CGST Act', 'exempt supply', 'blocked credit'],
+  },
+  {
+    id: 'q098',
+    query: 'What is the arm\'s length standard in Indian transfer pricing law and how do authorities determine it?',
+    category: 'tax',
+    expected_context: 'Income Tax Appellate Tribunal and High Court judgments on transfer pricing arm\'s length standard under Section 92C Income Tax Act',
+    expected_keywords: ['transfer pricing', "arm's length", 'Section 92C', 'Income Tax Act', 'comparable uncontrolled price', 'international transaction'],
+  },
+  {
+    id: 'q099',
+    query: 'Is TDS deductible on payments for software licences and cloud services to foreign companies under Section 194J and Section 195 of the Income Tax Act?',
+    category: 'tax',
+    expected_context: 'Supreme Court and High Court judgments on TDS on software payments — Skilsoft Ireland, Infosys judgments and CBDT circulars',
+    expected_keywords: ['TDS', 'Section 195', 'Section 194J', 'software licence', 'royalty', 'Income Tax Act'],
+  },
+  {
+    id: 'q100',
+    query: 'What is an Advance Pricing Agreement under the Income Tax Act and how does it provide certainty on transfer pricing?',
+    category: 'tax',
+    expected_context: 'CBDT guidelines and Income Tax Act provisions on APA programme under Sections 92CC and 92CD',
+    expected_keywords: ['advance pricing agreement', 'APA', 'Section 92CC', 'transfer pricing', 'Income Tax Act', 'certainty'],
+  },
 ];
+
+const _queryCountCheck: 100 = TEST_QUERIES.length as 100;

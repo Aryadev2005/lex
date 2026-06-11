@@ -21,6 +21,7 @@
     "@langchain/openai": "^1.4.7",
     "@lex/db": "workspace:*",
     "@lex/types": "workspace:*",
+    "docx": "^9.7.1",
     "dotenv": "^17.4.2",
     "fastify": "^4.28.0",
     "fastify-plugin": "^4.5.1",

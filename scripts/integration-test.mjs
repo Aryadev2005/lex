@@ -199,6 +199,42 @@ if (resultEvent) {
   }
 }
 
+// ─── REDLINE DOWNLOAD TEST ────────────────────────────────────────────────────
+
+console.log('\n📋 Redline Download Test');
+
+if (resultEvent && resultEvent.analysis?.risks?.length > 0) {
+  const redlineRes = await fetch(`${API}/api/contract/redline`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
+    body: JSON.stringify({ analysis: resultEvent.analysis }),
+  });
+
+  assert('Redline returns 200', redlineRes.status === 200, `got ${redlineRes.status}`);
+  assert(
+    'Redline Content-Type is wordprocessingml',
+    (redlineRes.headers.get('content-type') ?? '').includes('wordprocessingml'),
+    `got ${redlineRes.headers.get('content-type')}`,
+  );
+
+  const redlineBuffer = await redlineRes.arrayBuffer();
+  const redlineBytes = new Uint8Array(redlineBuffer);
+
+  assert('Redline body > 1000 bytes', redlineBytes.length > 1000, `got ${redlineBytes.length}`);
+  assert(
+    'Redline has DOCX magic number (PK)',
+    redlineBytes[0] === 0x50 && redlineBytes[1] === 0x4B,
+    `got 0x${redlineBytes[0]?.toString(16)} 0x${redlineBytes[1]?.toString(16)}`,
+  );
+
+  const { writeFileSync } = await import('fs');
+  const tmpPath = '/tmp/lex-test-redline.docx';
+  writeFileSync(tmpPath, Buffer.from(redlineBuffer));
+  console.log(`  ✅ Redline DOCX generated (${redlineBytes.length} bytes) — saved to ${tmpPath}`);
+} else {
+  console.log('  ⚠️  Skipping redline sub-test — no risks in contract analysis result');
+}
+
 // ─── DRAFT GENERATE SSE TEST ─────────────────────────────────────────────────
 
 console.log('\n📋 Draft Generate SSE Test');

@@ -50,6 +50,36 @@ export async function* streamResearchMemo(
   }
 }
 
+export async function saveDeclinedQuery(
+  supabase: any,
+  userId: string,
+  orgId: string | null,
+  query: string,
+  jurisdiction: string | undefined,
+  topSimilarity: number,
+  chunkCount: number,
+): Promise<void> {
+  try {
+    await supabase.from('agent_sessions').insert({
+      org_id: orgId,
+      user_id: userId,
+      session_type: 'research_declined',
+      status: 'declined',
+      input_query: query,
+      input_metadata: { jurisdiction: jurisdiction ?? null },
+      final_output: {
+        reason: 'insufficient_grounded_sources',
+        top_similarity: topSimilarity,
+        chunks_found: chunkCount,
+        threshold: 0.50,
+      },
+      total_tokens: 0,
+    });
+  } catch (err) {
+    console.error('saveDeclinedQuery failed:', err);
+  }
+}
+
 export async function saveResearchSession(
   supabase: any,
   userId: string,
@@ -70,11 +100,11 @@ export async function saveResearchSession(
         org_id: orgId,
         user_id: userId,
         session_type: 'research',
-        input_data: { query, jurisdiction },
-        output_data: { memo: fullMemo, source_count: sources.length },
+        input_query: query,
+        input_metadata: { jurisdiction: jurisdiction ?? null },
+        final_output: { memo: fullMemo, source_count: sources.length },
         status: 'completed',
-        model_used: 'gpt-4o',
-        tokens_used: tokensUsed,
+        total_tokens: tokensUsed,
       }),
       supabase.from('research_cache').upsert({
         org_id: orgId,

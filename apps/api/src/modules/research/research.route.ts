@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import { researchQuerySchema } from './research.schema.js';
 import { hybridSearch } from '../../lib/rag.js';
 import { sseStart, sseWrite, SIMILARITY_THRESHOLD } from '../../lib/sse.js';
-import { streamResearchMemo, saveResearchSession } from './research.service.js';
+import { streamResearchMemo, saveResearchSession, saveDeclinedQuery } from './research.service.js';
 
 export async function researchRoutes(fastify: FastifyInstance) {
   fastify.post(
@@ -39,6 +39,21 @@ export async function researchRoutes(fastify: FastifyInstance) {
           message: 'Insufficient grounded sources found for this query.',
         });
         reply.raw.end();
+
+        const topSimilarity = chunks.length > 0
+          ? Math.max(...chunks.map(c => c.vector_score))
+          : 0;
+
+        saveDeclinedQuery(
+          fastify.supabase,
+          userId,
+          org_id,
+          query,
+          jurisdiction,
+          topSimilarity,
+          chunks.length,
+        ).catch(err => fastify.log.error(err));
+
         return;
       }
 

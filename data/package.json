@@ -9,6 +9,7 @@
     "chunk": "tsx pipelines/03-chunk.ts",
     "embed": "tsx pipelines/04-embed.ts",
     "verify": "tsx pipelines/05-verify.ts",
+    "backfill:citations": "tsx pipelines/06-backfill-citations.ts",
     "download:aws": "tsx scripts/01-download-aws.ts",
     "download:indiacode": "tsx scripts/02-india-code-scraper.ts",
     "verify:downloads": "tsx scripts/03-verify-downloads.ts"

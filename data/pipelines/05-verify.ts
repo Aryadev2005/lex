@@ -131,6 +131,125 @@ function printWorstBest(worst: QueryResult[], best: QueryResult[]): void {
   }
 }
 
+// ── Markdown benchmark report ────────────────────────────────────────────────
+async function writeBenchmarkMarkdown(
+  allResults: QueryResult[],
+  metrics: VerificationMetrics,
+  verdict: Verdict,
+  reportsDir: string,
+  timestamp: string,
+): Promise<string> {
+  const total = allResults.length;
+
+  const verdictStr =
+    verdict === 'VERIFIED' ? '✅ VERIFIED' :
+    verdict === 'MARGINAL' ? '⚠️ MARGINAL' : '❌ FAILED';
+
+  const precision1 = total > 0
+    ? ((allResults.filter(r => r.top_similarity >= 0.50).length / total) * 100).toFixed(1)
+    : '0.0';
+
+  // ── Per-category stats ──────────────────────────────────────────────────
+  const categoryMap = new Map<string, { total: number; clearing: number; simSum: number }>();
+  for (const r of allResults) {
+    const cat = r.query.category;
+    const existing = categoryMap.get(cat) ?? { total: 0, clearing: 0, simSum: 0 };
+    existing.total++;
+    if (r.clears_threshold) existing.clearing++;
+    existing.simSum += r.top_similarity;
+    categoryMap.set(cat, existing);
+  }
+
+  const categoryRows = [...categoryMap.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([cat, s]) => {
+      const avg = s.total > 0 ? (s.simSum / s.total).toFixed(4) : '0.0000';
+      return `| ${cat} | ${s.total} | ${s.clearing} | ${avg} |`;
+    })
+    .join('\n');
+
+  // ── Query-level results sorted descending by similarity ─────────────────
+  const sortedDesc = [...allResults].sort((a, b) => b.top_similarity - a.top_similarity);
+
+  const queryRows = sortedDesc.map(r => {
+    const q = r.query.query.slice(0, 60).replace(/\|/g, '\\|');
+    const sim = r.top_similarity.toFixed(4);
+    const allText = r.results
+      .slice(0, 5)
+      .map(res => res.content + ' ' + res.full_citation + ' ' + res.section_path.join(' '))
+      .join(' ')
+      .toLowerCase();
+    const found = r.query.expected_keywords.filter(k => allText.includes(k.toLowerCase())).length;
+    const total_kw = r.query.expected_keywords.length;
+    const clears = r.clears_threshold ? '✅' : '❌';
+    return `| ${r.query.id} | ${r.query.category} | ${q} | ${sim} | ✓ ${found}/${total_kw} | ${clears} |`;
+  }).join('\n');
+
+  // ── Failed queries ────────────────────────────────────────────────────
+  const failed = allResults.filter(r => !r.clears_threshold);
+  let failedSection: string;
+  if (failed.length === 0) {
+    failedSection = 'All queries cleared the similarity threshold.';
+  } else {
+    failedSection = failed.map(r => {
+      const allText = r.results
+        .slice(0, 5)
+        .map(res => res.content + ' ' + res.full_citation + ' ' + res.section_path.join(' '))
+        .join(' ')
+        .toLowerCase();
+      const missing = r.query.expected_keywords
+        .filter(k => !allText.includes(k.toLowerCase()))
+        .join(', ');
+      return `- **${r.query.id}** (${r.query.category}) — top_similarity: ${r.top_similarity.toFixed(4)} | missing keywords: ${missing || 'none'}`;
+    }).join('\n');
+  }
+
+  const isoTs = new Date().toISOString();
+
+  const md = `---
+# LEX Retrieval Benchmark Report
+Generated: ${isoTs}
+Test Set: 100 legal queries across 8 practice areas
+Embedding Model: text-embedding-3-large (3072 dimensions)
+Search Strategy: Reciprocal Rank Fusion (vector + full-text BM25)
+Similarity Threshold: 0.50 (verified from live pipeline data)
+
+## Summary
+
+| Metric | Value |
+|--------|-------|
+| Queries with results | ${metrics.queries_with_results} / ${total} |
+| Queries clearing threshold (≥0.50) | ${metrics.queries_clearing_threshold} / ${total} |
+| Precision@1 (top result clears threshold) | ${precision1}% |
+| Average top similarity | ${metrics.avg_top_similarity.toFixed(4)} |
+| Average retrieval latency | ${metrics.avg_latency_ms.toFixed(0)}ms |
+| Verdict | ${verdictStr} |
+
+## Results by Category
+
+| Category | Queries | Clearing Threshold | Avg Similarity |
+|----------|---------|-------------------|----------------|
+${categoryRows}
+
+## Query-Level Results (Sorted by Similarity, Descending)
+
+| ID | Category | Query (truncated 60 chars) | Top Similarity | Keywords Found | Clears Threshold |
+|----|----------|--------------------------|----------------|----------------|-----------------|
+${queryRows}
+
+## Failed Queries (Did Not Clear Threshold)
+
+${failedSection}
+
+---
+*This benchmark was produced by the LEX data verification pipeline. Results reflect the live vector database state at time of generation.*
+`;
+
+  const mdPath = resolve(reportsDir, `benchmark-${timestamp}.md`);
+  await writeFile(mdPath, md, 'utf-8');
+  return mdPath;
+}
+
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main(): Promise<void> {
   console.log(bold('\n' + '═'.repeat(70)));
@@ -204,6 +323,10 @@ async function main(): Promise<void> {
 
   await writeFile(reportPath, JSON.stringify(report, null, 2), 'utf-8');
   console.log(`\nReport written to: ${reportPath}`);
+
+  // ── Write Markdown benchmark report ─────────────────────────────────────
+  const mdPath = await writeBenchmarkMarkdown(allResults, metrics, verdict, reportsDir, timestamp);
+  console.log(`Markdown report: ${mdPath}`);
 
   // ── Exit code ────────────────────────────────────────────────────────────
   process.exitCode = verdict === 'VERIFIED' ? 0 : 1;

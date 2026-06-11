@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
+    "pdfjs-dist": "^4.10.38",
     "@lex/types": "workspace:*",
     "@tanstack/react-query": "^5.45.0",
     "clsx": "^2.1.1",
