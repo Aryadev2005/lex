@@ -69,6 +69,9 @@ export function useSSE() {
               try {
                 const parsed = JSON.parse(chunk.slice(6)) as SSEEvent;
                 setEvents(prev => [...prev, parsed]);
+                if (parsed.type === 'error') {
+                  setError((parsed as { type: string; message?: string }).message ?? 'An error occurred');
+                }
               } catch {
                 // malformed JSON — skip
               }

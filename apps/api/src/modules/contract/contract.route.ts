@@ -19,7 +19,7 @@ export async function contractRoutes(fastify: FastifyInstance) {
       }
 
       const { document_text } = parsed.data;
-      sseStart(reply.raw);
+      sseStart(reply);
 
       try {
         await contractGraph.invoke({

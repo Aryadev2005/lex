@@ -12,8 +12,10 @@ export interface AuthState {
   user: User | null;
   token: string | null;
   isAuthed: boolean;
+  _hasHydrated: boolean;
   setAuth: (user: User, token: string) => void;
   clearAuth: () => void;
+  setHasHydrated: (v: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -22,6 +24,7 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthed: false,
+      _hasHydrated: false,
 
       setAuth: (user, token) => {
         Cookies.set(COOKIE_NAME, token, { expires: COOKIE_EXPIRES, sameSite: 'Lax' });
@@ -32,6 +35,8 @@ export const useAuthStore = create<AuthState>()(
         Cookies.remove(COOKIE_NAME);
         set({ user: null, token: null, isAuthed: false });
       },
+
+      setHasHydrated: (v) => set({ _hasHydrated: v }),
     }),
     {
       name: 'lex-auth',
@@ -39,6 +44,7 @@ export const useAuthStore = create<AuthState>()(
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isAuthed = !!state.token;
+          state.setHasHydrated(true);
         }
       },
     },

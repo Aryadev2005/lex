@@ -104,4 +104,17 @@ describe('ResearchPage', () => {
 
     expect(screen.getByText('Hello world')).toBeInTheDocument();
   });
+
+  it('renders error message when error state is set', () => {
+    vi.mocked(useSSE).mockReturnValue({
+      events: [],
+      isStreaming: false,
+      error: 'network error',
+      startStream: vi.fn(),
+      reset: vi.fn(),
+    });
+    render(<ResearchPage />);
+    expect(screen.getByText(/request failed/i)).toBeInTheDocument();
+    expect(screen.getByText(/network error/i)).toBeInTheDocument();
+  });
 });

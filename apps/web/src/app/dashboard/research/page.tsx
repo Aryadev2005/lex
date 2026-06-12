@@ -113,10 +113,11 @@ export default function ResearchPage() {
         </div>
       </Card>
 
-      {error && (
-        <Card className="border-red-700 bg-red-900/20">
-          <p className="text-sm text-red-400">{error}</p>
-        </Card>
+      {error && !isStreaming && (
+        <div className="rounded-md border border-red-700 bg-red-900/30 px-4 py-3">
+          <p className="text-sm font-semibold text-red-300">Request failed</p>
+          <p className="text-sm text-red-400 mt-1">{error}</p>
+        </div>
       )}
 
       {sourcesEvent && (

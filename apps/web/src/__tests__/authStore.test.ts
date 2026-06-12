@@ -27,7 +27,7 @@ const mockUser: User = {
 describe('authStore', () => {
   beforeEach(() => {
     // Reset store to initial state
-    useAuthStore.setState({ user: null, token: null, isAuthed: false });
+    useAuthStore.setState({ user: null, token: null, isAuthed: false, _hasHydrated: false });
     vi.clearAllMocks();
   });
 
@@ -66,5 +66,15 @@ describe('authStore', () => {
     useAuthStore.getState().setAuth(mockUser, 'test-jwt-token');
     useAuthStore.getState().clearAuth();
     expect(Cookies.remove).toHaveBeenCalledWith('auth_token');
+  });
+
+  it('_hasHydrated starts false', () => {
+    const { _hasHydrated } = useAuthStore.getState();
+    expect(_hasHydrated).toBe(false);
+  });
+
+  it('setHasHydrated(true) sets _hasHydrated to true', () => {
+    useAuthStore.getState().setHasHydrated(true);
+    expect(useAuthStore.getState()._hasHydrated).toBe(true);
   });
 });

@@ -36,7 +36,7 @@ export async function draftRoutes(fastify: FastifyInstance) {
         return reply.status(404).send({ success: false, error: 'Template not found' });
       }
 
-      sseStart(reply.raw);
+      sseStart(reply);
       sseWrite(reply.raw, { type: 'template', template_name: template.name });
 
       try {

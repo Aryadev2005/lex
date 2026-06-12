@@ -128,6 +128,35 @@ describe('DraftPage', () => {
     expect(screen.getByText(/Suresh Sharma/)).toBeInTheDocument();
   });
 
+  it('renders error banner in step 3 when error state is set', async () => {
+    const { default: userEvent } = await import('@testing-library/user-event');
+    const user = userEvent.setup();
+
+    vi.mocked(useSSE).mockReturnValue({
+      events: [],
+      isStreaming: false,
+      error: 'OpenAI timeout',
+      startStream: vi.fn(),
+      reset: vi.fn(),
+    });
+
+    mockFetchSuccess();
+    render(<DraftPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText('Legal Notice (General)')).toBeInTheDocument();
+    });
+
+    await user.click(screen.getByText('Legal Notice (General)'));
+    await user.type(
+      screen.getByRole('textbox'),
+      'I need to send a legal notice to recover my money.',
+    );
+    await user.click(screen.getByRole('button', { name: /generate document/i }));
+
+    expect(screen.getByText(/generation failed/i)).toBeInTheDocument();
+  });
+
   it('shows Copy to Clipboard button when done event is present', async () => {
     const { default: userEvent } = await import('@testing-library/user-event');
     const user = userEvent.setup();

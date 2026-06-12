@@ -20,7 +20,7 @@ export async function researchRoutes(fastify: FastifyInstance) {
       const { query, jurisdiction, match_count } = parsed.data;
       const { sub: userId, org_id } = request.user;
 
-      sseStart(reply.raw);
+      sseStart(reply);
 
       let chunks;
       try {

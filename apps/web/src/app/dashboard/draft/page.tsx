@@ -21,7 +21,7 @@ export default function DraftPage() {
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateCard | null>(null);
   const [situation, setSituation] = useState('');
 
-  const { events, isStreaming, startStream, reset } = useSSE();
+  const { events, isStreaming, error, startStream, reset } = useSSE();
   const token = useAuthStore(s => s.token);
 
   useEffect(() => {
@@ -142,7 +142,7 @@ export default function DraftPage() {
 
       {step === 3 && (
         <div className="space-y-4">
-          {isStreaming && (
+          {isStreaming && !error && (
             <div className="flex items-center gap-3 rounded-lg border border-slate-700 bg-slate-800/40 px-4 py-3">
               <svg
                 className="h-4 w-4 animate-spin text-indigo-400"
@@ -164,6 +164,13 @@ export default function DraftPage() {
                 />
               </svg>
               <span className="text-sm text-slate-400">Generating and polishing document…</span>
+            </div>
+          )}
+
+          {error && (
+            <div className="rounded-md border border-red-700 bg-red-900/30 px-4 py-3 mb-4">
+              <p className="text-sm font-semibold text-red-300">Generation failed</p>
+              <p className="text-sm text-red-400 mt-1">{error}</p>
             </div>
           )}
 
