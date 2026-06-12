@@ -13,8 +13,12 @@ type TextItem = {
 };
 type TextMarkedContent = { type: string; id: string };
 
-// Disable worker thread — pdfjs falls back to main-thread execution in Node.js
-(pdfjsLib.GlobalWorkerOptions as { workerSrc: unknown }).workerSrc = false;
+// Point to the bundled worker using a relative path from this file's directory
+// (../../../node_modules/pdfjs-dist/...) so Node.js can resolve it correctly.
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  '../../node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs',
+  import.meta.url,
+).href;
 
 interface PageResult {
   pageNumber: number;

@@ -17,14 +17,14 @@ export async function researchRoutes(fastify: FastifyInstance) {
         });
       }
 
-      const { query, jurisdiction, match_count } = parsed.data;
+      const { query, jurisdiction, match_count, document_types } = parsed.data;
       const { sub: userId, org_id } = request.user;
 
       sseStart(reply);
 
       let chunks;
       try {
-        chunks = await hybridSearch(fastify.supabase, fastify.openai, query, match_count);
+        chunks = await hybridSearch(fastify.supabase, fastify.openai, query, match_count, document_types);
       } catch (err) {
         sseWrite(reply.raw, { type: 'error', message: (err as Error).message });
         reply.raw.end();

@@ -1,10 +1,11 @@
--- Add district court metadata columns to document_chunks if not present
+-- Add district court and NCLT metadata columns to document_chunks if not present
 ALTER TABLE document_chunks
-  ADD COLUMN IF NOT EXISTS judge_name text,
-  ADD COLUMN IF NOT EXISTS state      text,
-  ADD COLUMN IF NOT EXISTS district   text,
-  ADD COLUMN IF NOT EXISTS source     text,
-  ADD COLUMN IF NOT EXISTS tribunal   text;
+  ADD COLUMN IF NOT EXISTS judge_name      text,
+  ADD COLUMN IF NOT EXISTS state           text,
+  ADD COLUMN IF NOT EXISTS district        text,
+  ADD COLUMN IF NOT EXISTS source          text,
+  ADD COLUMN IF NOT EXISTS tribunal        text,
+  ADD COLUMN IF NOT EXISTS bench_location  text;
 
 -- Index for filtering by source (e.g. ecourts_api)
 CREATE INDEX IF NOT EXISTS idx_document_chunks_source

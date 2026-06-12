@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(PGPASSWORD=Aryadev2005* psql postgresql://postgres@db.datjnimxqahchollxolr.supabase.co:5432/postgres -f /Users/aryadevchatterjee/Documents/LEX/supabase/migrations/20240002_add_court_metadata_columns.sql)"
+    ]
+  }
+}

@@ -1,0 +1,127 @@
+{"id":"151418239","status":"success","timestamp":"2026-06-12T14:16:47.141Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"146682440","status":"success","timestamp":"2026-06-12T14:16:47.999Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court - Orders"}}
+{"id":"171664191","status":"success","timestamp":"2026-06-12T14:16:48.991Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-17"}}
+{"id":"52605777","status":"success","timestamp":"2026-06-12T14:16:50.250Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-30"}}
+{"id":"109955835","status":"success","timestamp":"2026-06-12T14:16:54.073Z","metadata":{"bench":"Mumbai","year":2026,"chunks":193}}
+{"id":"90454712","status":"success","timestamp":"2026-06-12T14:16:55.754Z","metadata":{"bench":"Mumbai","year":2026,"chunks":78}}
+{"id":"178075299","status":"success","timestamp":"2026-06-12T14:16:57.431Z","metadata":{"bench":"Mumbai","year":2026,"chunks":75}}
+{"id":"89968867","status":"success","timestamp":"2026-06-12T14:16:59.161Z","metadata":{"bench":"Mumbai","year":2026,"chunks":75}}
+{"id":"104404306","status":"success","timestamp":"2026-06-12T14:17:02.032Z","metadata":{"bench":"Mumbai","year":2026,"chunks":208}}
+{"id":"187070957","status":"success","timestamp":"2026-06-12T14:17:02.911Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-12"}}
+{"id":"173245431","status":"success","timestamp":"2026-06-12T14:17:05.744Z","metadata":{"bench":"Mumbai","year":2026,"chunks":75}}
+{"id":"63980621","status":"success","timestamp":"2026-06-12T14:17:07.325Z","metadata":{"bench":"Mumbai","year":2026,"chunks":75}}
+{"id":"116529697","status":"success","timestamp":"2026-06-12T14:17:08.217Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-24"}}
+{"id":"67620179","status":"success","timestamp":"2026-06-12T14:17:09.099Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-23"}}
+{"id":"59378879","status":"success","timestamp":"2026-06-12T14:17:09.981Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-23"}}
+{"id":"187345714","status":"success","timestamp":"2026-06-12T14:17:10.854Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-12"}}
+{"id":"182643201","status":"success","timestamp":"2026-06-12T14:17:11.738Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-23"}}
+{"id":"105575555","status":"success","timestamp":"2026-06-12T14:17:12.696Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-23"}}
+{"id":"14808490","status":"success","timestamp":"2026-06-12T14:17:13.572Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-05-08"}}
+{"id":"75196836","status":"success","timestamp":"2026-06-12T14:17:15.413Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"74194425","status":"success","timestamp":"2026-06-12T14:17:18.534Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"37711867","status":"success","timestamp":"2026-06-12T14:17:20.112Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"193167983","status":"success","timestamp":"2026-06-12T14:17:22.479Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"96481591","status":"success","timestamp":"2026-06-12T14:17:26.483Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"7885800","status":"success","timestamp":"2026-06-12T14:17:28.597Z","metadata":{"bench":"Mumbai","year":2026,"chunks":60}}
+{"id":"198723666","status":"success","timestamp":"2026-06-12T14:17:30.137Z","metadata":{"bench":"Mumbai","year":2026,"chunks":52}}
+{"id":"161768416","status":"success","timestamp":"2026-06-12T14:17:31.071Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-03-28"}}
+{"id":"91835215","status":"success","timestamp":"2026-06-12T14:17:31.924Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-26"}}
+{"id":"86531490","status":"success","timestamp":"2026-06-12T14:17:32.793Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-27"}}
+{"id":"44203648","status":"success","timestamp":"2026-06-12T14:17:33.690Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-27"}}
+{"id":"121079879","status":"success","timestamp":"2026-06-12T14:17:35.691Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2010-09-27"}}
+{"id":"194811460","status":"success","timestamp":"2026-06-12T14:17:36.835Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-14"}}
+{"id":"180228577","status":"success","timestamp":"2026-06-12T14:17:38.037Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-14"}}
+{"id":"121674167","status":"success","timestamp":"2026-06-12T14:17:39.027Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-14"}}
+{"id":"31782941","status":"success","timestamp":"2026-06-12T14:17:40.064Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-14"}}
+{"id":"95844542","status":"success","timestamp":"2026-06-12T14:17:41.072Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-25"}}
+{"id":"36192438","status":"success","timestamp":"2026-06-12T14:17:41.984Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-31"}}
+{"id":"32100099","status":"success","timestamp":"2026-06-12T14:17:43.031Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-31"}}
+{"id":"160110924","status":"success","timestamp":"2026-06-12T14:17:44.333Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-05-14"}}
+{"id":"168967031","status":"success","timestamp":"2026-06-12T14:17:46.799Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-08"}}
+{"id":"7890067","status":"success","timestamp":"2026-06-12T14:17:47.740Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-08"}}
+{"id":"39148946","status":"success","timestamp":"2026-06-12T14:17:49.297Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-30"}}
+{"id":"136837833","status":"success","timestamp":"2026-06-12T14:17:50.358Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-03"}}
+{"id":"19549122","status":"success","timestamp":"2026-06-12T14:17:51.454Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-03"}}
+{"id":"142598247","status":"success","timestamp":"2026-06-12T14:17:52.493Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-30"}}
+{"id":"87542933","status":"success","timestamp":"2026-06-12T14:17:53.485Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-02-04"}}
+{"id":"39229853","status":"success","timestamp":"2026-06-12T14:17:54.589Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"129427877","status":"success","timestamp":"2026-06-12T14:17:55.548Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"116839744","status":"success","timestamp":"2026-06-12T14:17:56.818Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"115252141","status":"success","timestamp":"2026-06-12T14:17:59.233Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"146161757","status":"success","timestamp":"2026-06-12T14:18:00.287Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"62665590","status":"success","timestamp":"2026-06-12T14:18:01.346Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"60054013","status":"success","timestamp":"2026-06-12T14:18:02.408Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"24086743","status":"success","timestamp":"2026-06-12T14:18:03.447Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-11-21"}}
+{"id":"37362170","status":"success","timestamp":"2026-06-12T14:18:04.326Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-19"}}
+{"id":"75569498","status":"success","timestamp":"2026-06-12T14:18:05.207Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-19"}}
+{"id":"108635535","status":"success","timestamp":"2026-06-12T14:18:07.291Z","metadata":{"bench":"Mumbai","year":2026,"chunks":34}}
+{"id":"183759517","status":"success","timestamp":"2026-06-12T14:18:08.803Z","metadata":{"bench":"Mumbai","year":2026,"chunks":34}}
+{"id":"68161188","status":"success","timestamp":"2026-06-12T14:18:09.741Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2018-05-23"}}
+{"id":"124221835","status":"success","timestamp":"2026-06-12T14:18:11.853Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-08-06"}}
+{"id":"5565046","status":"success","timestamp":"2026-06-12T14:18:14.164Z","metadata":{"bench":"Mumbai","year":2026,"chunks":149}}
+{"id":"62466977","status":"success","timestamp":"2026-06-12T14:18:15.153Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-25"}}
+{"id":"110640060","status":"success","timestamp":"2026-06-12T14:18:16.102Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-25"}}
+{"id":"164278000","status":"success","timestamp":"2026-06-12T14:18:17.046Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-25"}}
+{"id":"20424584","status":"success","timestamp":"2026-06-12T14:18:19.188Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-25"}}
+{"id":"133161828","status":"success","timestamp":"2026-06-12T14:18:20.161Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-23"}}
+{"id":"89798672","status":"success","timestamp":"2026-06-12T14:18:21.091Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-05-28"}}
+{"id":"154413879","status":"success","timestamp":"2026-06-12T14:18:22.012Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-23"}}
+{"id":"133062312","status":"success","timestamp":"2026-06-12T14:18:22.969Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-17"}}
+{"id":"81632305","status":"success","timestamp":"2026-06-12T14:18:25.084Z","metadata":{"bench":"Mumbai","year":2026,"chunks":149}}
+{"id":"81576303","status":"success","timestamp":"2026-06-12T14:18:25.990Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Madras High Court"}}
+{"id":"141269227","status":"success","timestamp":"2026-06-12T14:18:27.105Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-09-26"}}
+{"id":"77150896","status":"success","timestamp":"2026-06-12T14:18:28.124Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-09-26"}}
+{"id":"160467735","status":"success","timestamp":"2026-06-12T14:18:30.334Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-27"}}
+{"id":"16079849","status":"success","timestamp":"2026-06-12T14:18:31.235Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-27"}}
+{"id":"116156615","status":"success","timestamp":"2026-06-12T14:18:32.278Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-12-12"}}
+{"id":"35236944","status":"success","timestamp":"2026-06-12T14:18:33.789Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2019-03-29"}}
+{"id":"67220494","status":"success","timestamp":"2026-06-12T14:18:35.583Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-19"}}
+{"id":"79650383","status":"success","timestamp":"2026-06-12T14:18:36.748Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-02-19"}}
+{"id":"192000597","status":"success","timestamp":"2026-06-12T14:18:41.340Z","metadata":{"bench":"Mumbai","year":2026,"chunks":458}}
+{"id":"102660622","status":"success","timestamp":"2026-06-12T14:18:42.290Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-24"}}
+{"id":"131845091","status":"success","timestamp":"2026-06-12T14:18:43.873Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2021-12-09"}}
+{"id":"34977432","status":"success","timestamp":"2026-06-12T14:18:44.661Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-04"}}
+{"id":"116195586","status":"success","timestamp":"2026-06-12T14:18:45.447Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-04"}}
+{"id":"17862796","status":"success","timestamp":"2026-06-12T14:18:46.240Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-04"}}
+{"id":"176640931","status":"success","timestamp":"2026-06-12T14:18:47.036Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-04"}}
+{"id":"61180569","status":"success","timestamp":"2026-06-12T14:18:47.824Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-04-04"}}
+{"id":"58680499","status":"success","timestamp":"2026-06-12T14:18:49.786Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-30"}}
+{"id":"134495077","status":"success","timestamp":"2026-06-12T14:18:50.651Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-06-30"}}
+{"id":"19574916","status":"success","timestamp":"2026-06-12T14:18:51.426Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2026-01-09"}}
+{"id":"64911047","status":"success","timestamp":"2026-06-12T14:18:52.196Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-06"}}
+{"id":"185265157","status":"success","timestamp":"2026-06-12T14:18:52.969Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-10-06"}}
+{"id":"41253354","status":"success","timestamp":"2026-06-12T14:18:53.766Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-03-18"}}
+{"id":"174298683","status":"success","timestamp":"2026-06-12T14:18:54.537Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-03-18"}}
+{"id":"149713041","status":"success","timestamp":"2026-06-12T14:18:55.359Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Madras High Court"}}
+{"id":"142303394","status":"success","timestamp":"2026-06-12T14:18:56.142Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Madras High Court"}}
+{"id":"192408378","status":"success","timestamp":"2026-06-12T14:18:58.102Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"183410281","status":"success","timestamp":"2026-06-12T14:18:59.197Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"199354904","status":"success","timestamp":"2026-06-12T14:19:00.021Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"176530763","status":"success","timestamp":"2026-06-12T14:19:00.838Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"168604473","status":"success","timestamp":"2026-06-12T14:19:01.667Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"7709598","status":"success","timestamp":"2026-06-12T14:19:02.484Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"165600889","status":"success","timestamp":"2026-06-12T14:19:03.311Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-23"}}
+{"id":"184668723","status":"success","timestamp":"2026-06-12T14:19:05.312Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"50064065","status":"success","timestamp":"2026-06-12T14:19:06.084Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"74967159","status":"success","timestamp":"2026-06-12T14:19:06.885Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-07"}}
+{"id":"87822386","status":"success","timestamp":"2026-06-12T14:19:07.665Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-07"}}
+{"id":"12457859","status":"success","timestamp":"2026-06-12T14:19:08.443Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-08"}}
+{"id":"129335734","status":"success","timestamp":"2026-06-12T14:19:09.212Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2025-07-08"}}
+{"id":"151009424","status":"success","timestamp":"2026-06-12T14:19:11.759Z","metadata":{"bench":"Mumbai","year":2026,"chunks":27}}
+{"id":"143565759","status":"success","timestamp":"2026-06-12T14:19:12.855Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2018-06-20"}}
+{"id":"4821831","status":"success","timestamp":"2026-06-12T14:19:13.708Z","metadata":{"skipped":true,"reason":"skip-old","publishdate":"2021-05-11"}}
+{"id":"62561829","status":"success","timestamp":"2026-06-12T14:19:14.485Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Supreme Court of India"}}
+{"id":"20774343","status":"success","timestamp":"2026-06-12T14:19:15.283Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"18594041","status":"success","timestamp":"2026-06-12T14:19:16.071Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"160013015","status":"success","timestamp":"2026-06-12T14:19:16.870Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"137634356","status":"success","timestamp":"2026-06-12T14:19:17.653Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"81921414","status":"success","timestamp":"2026-06-12T14:19:19.542Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"34548602","status":"success","timestamp":"2026-06-12T14:19:20.348Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"198738229","status":"success","timestamp":"2026-06-12T14:19:21.133Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Bombay High Court"}}
+{"id":"186514252","status":"success","timestamp":"2026-06-12T14:19:21.915Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Madras High Court"}}
+{"id":"129747476","status":"success","timestamp":"2026-06-12T14:19:22.716Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}
+{"id":"32753685","status":"success","timestamp":"2026-06-12T14:19:23.596Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}
+{"id":"47601153","status":"success","timestamp":"2026-06-12T14:19:24.392Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}
+{"id":"150081602","status":"success","timestamp":"2026-06-12T14:19:25.251Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}
+{"id":"141546248","status":"success","timestamp":"2026-06-12T14:19:26.056Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}
+{"id":"60119352","status":"success","timestamp":"2026-06-12T14:19:26.856Z","metadata":{"skipped":true,"reason":"not-itat","docsource":"Delhi High Court"}}

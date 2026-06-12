@@ -12,6 +12,11 @@
     "backfill:citations": "tsx pipelines/06-backfill-citations.ts",
     "sync:ecourts": "tsx pipelines/07-ecourts-sync.ts",
     "sync:ecourts:backfill": "tsx pipelines/07-ecourts-sync.ts --days 180",
+    "scrape:nclt": "tsx scripts/nclt-scraper.ts",
+    "scrape:nclt:backfill": "tsx scripts/nclt-scraper.ts --days-back 180",
+    "scrape:nclt:daily": "tsx scripts/nclt-scraper.ts --days-back 2",
+    "scrape:itat": "tsx scripts/itat-scraper.ts",
+    "scrape:itat:daily": "tsx scripts/itat-scraper.ts",
     "download:aws": "tsx scripts/01-download-aws.ts",
     "download:indiacode": "tsx scripts/02-india-code-scraper.ts",
     "verify:downloads": "tsx scripts/03-verify-downloads.ts"

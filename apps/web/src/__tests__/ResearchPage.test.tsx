@@ -117,4 +117,43 @@ describe('ResearchPage', () => {
     expect(screen.getByText(/request failed/i)).toBeInTheDocument();
     expect(screen.getByText(/network error/i)).toBeInTheDocument();
   });
+
+  it('document type dropdown renders with all 6 options', () => {
+    render(<ResearchPage />);
+    const select = screen.getByRole('listbox');
+    expect(select).toBeInTheDocument();
+    expect(screen.getByText('Supreme Court')).toBeInTheDocument();
+    expect(screen.getByText('District Courts')).toBeInTheDocument();
+    expect(screen.getByText('Legislation')).toBeInTheDocument();
+  });
+
+  it('startStream includes document_types when selection is made', async () => {
+    const mockStart = vi.fn();
+    vi.mocked(useSSE).mockReturnValue({
+      events: [],
+      isStreaming: false,
+      error: null,
+      startStream: mockStart,
+      reset: vi.fn(),
+    });
+
+    render(<ResearchPage />);
+    const { default: userEvent } = await import('@testing-library/user-event');
+    const user = userEvent.setup();
+
+    await user.type(
+      screen.getByPlaceholderText(/reasonable classification/i),
+      'Test query about ITAT',
+    );
+
+    await user.selectOptions(screen.getByRole('listbox'), ['tribunal']);
+
+    await user.click(screen.getByRole('button', { name: /research/i }));
+
+    expect(mockStart).toHaveBeenCalledWith(
+      '/api/research/query',
+      expect.objectContaining({ document_types: ['tribunal'] }),
+      expect.any(String),
+    );
+  });
 });

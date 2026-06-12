@@ -40,18 +40,42 @@ function MinimalMarkdown({ text }: { text: string }) {
   return <div>{elements}</div>;
 }
 
+const DOC_TYPE_OPTIONS = [
+  { value: 'supreme_court',  label: 'Supreme Court' },
+  { value: 'high_court',     label: 'High Courts' },
+  { value: 'district_court', label: 'District Courts' },
+  { value: 'nclt',           label: 'NCLT / NCLAT' },
+  { value: 'tribunal',       label: 'Tribunals (ITAT etc.)' },
+  { value: 'legislation',    label: 'Legislation' },
+] as const;
+
+function humanLabel(value: string): string {
+  return DOC_TYPE_OPTIONS.find(o => o.value === value)?.label ?? value;
+}
+
 export default function ResearchPage() {
   const [query, setQuery] = useState('');
   const [jurisdiction, setJurisdiction] = useState('');
+  const [documentTypes, setDocumentTypes] = useState<string[]>([]);
 
   const { events, isStreaming, error, startStream, reset } = useSSE();
   const token = useAuthStore(s => s.token);
+
+  function handleDocTypeChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const selected = Array.from(e.target.selectedOptions, o => o.value);
+    setDocumentTypes(selected);
+  }
 
   function handleSubmit() {
     if (!query.trim() || !token) return;
     startStream(
       '/api/research/query',
-      { query, jurisdiction: jurisdiction || undefined, match_count: 12 },
+      {
+        query,
+        jurisdiction: jurisdiction || undefined,
+        match_count: 12,
+        document_types: documentTypes.length > 0 ? documentTypes : undefined,
+      },
       token,
     );
   }
@@ -93,6 +117,32 @@ export default function ResearchPage() {
             placeholder="e.g. Delhi High Court"
             className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
           />
+
+          <div>
+            <label className="mb-1 block text-sm text-slate-400">
+              Filter by source
+            </label>
+            <select
+              multiple
+              size={4}
+              value={documentTypes}
+              onChange={handleDocTypeChange}
+              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-white focus:border-indigo-500 focus:outline-none"
+            >
+              {DOC_TYPE_OPTIONS.map(opt => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            {documentTypes.length === 0 ? (
+              <p className="mt-1 text-xs text-slate-500">Showing all sources</p>
+            ) : (
+              <p className="mt-1 text-xs text-indigo-400">
+                Filtered to: {documentTypes.map(humanLabel).join(', ')}
+              </p>
+            )}
+          </div>
 
           <div className="flex gap-3">
             <Button

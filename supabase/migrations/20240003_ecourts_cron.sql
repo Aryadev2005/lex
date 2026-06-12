@@ -21,3 +21,29 @@ SELECT cron.schedule(
     );
   $$
 );
+
+-- Daily NCLT scrape at 2:30 AM IST (21:00 UTC previous day)
+SELECT cron.schedule(
+  'nclt-daily-scrape',
+  '0 21 * * *',
+  $$
+    SELECT net.http_post(
+      url     := '<RAILWAY_API_URL>/api/admin/scrape-nclt',
+      headers := '{"Authorization": "Bearer <ADMIN_SECRET>"}'::jsonb,
+      body    := '{"daysBack": 2}'::jsonb
+    );
+  $$
+);
+
+-- Daily ITAT scrape at 3:30 AM IST (22:00 UTC previous day)
+SELECT cron.schedule(
+  'itat-daily-scrape',
+  '0 22 * * *',
+  $$
+    SELECT net.http_post(
+      url     := '<RAILWAY_API_URL>/api/admin/scrape-itat',
+      headers := '{"Authorization": "Bearer <ADMIN_SECRET>"}'::jsonb,
+      body    := '{}'::jsonb
+    );
+  $$
+);

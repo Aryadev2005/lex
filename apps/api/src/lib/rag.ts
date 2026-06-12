@@ -19,6 +19,7 @@ export async function hybridSearch(
   openai: OpenAI,
   query: string,
   matchCount: number = 12,
+  documentTypes?: string[],
 ): Promise<HybridChunk[]> {
   const embeddingResponse = await openai.embeddings.create({
     model: 'text-embedding-3-large',
@@ -29,12 +30,10 @@ export async function hybridSearch(
   const embedding = embeddingResponse.data[0]!.embedding;
 
   const { data, error } = await supabase.rpc('hybrid_search', {
-    query_text: query,
-    query_embedding: embedding,
-    match_count: matchCount,
-    rrf_k: 60,
-    include_public: true,
-    similarity_threshold: 0,
+    p_query_text: query,
+    p_query_embedding: embedding,
+    p_match_count: matchCount,
+    p_document_types: documentTypes ?? null,
   });
 
   if (error) {
